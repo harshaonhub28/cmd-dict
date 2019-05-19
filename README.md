@@ -19,3 +19,6 @@ npm install
 ./dict - prints word of the day and all details of that word
 
 ./dict play - Game, where a hint about the word is given and the word has to be guessed
+
+P.S. - Make sure the dict file in the repo has executable permission
+To make it executable - chmod +x ./dict
