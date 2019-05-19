@@ -4,7 +4,7 @@ const request = require("../request");
 
 //function to fetch definitions of a word
 const getDefinition = word => {
-  request(apiPath, word)
+  return request(apiPath, word)
     .then(response => {
       //looping over the definitions of a word
       const definitionsArray = JSON.parse(response);
@@ -16,12 +16,14 @@ const getDefinition = word => {
           );
           console.log("\n");
         }
+        return;
       } else {
         console.log("No definitions found for the word");
       }
     })
     .catch(error => {
       console.log(error.error, error.statusCode);
+      return;
     });
 };
 

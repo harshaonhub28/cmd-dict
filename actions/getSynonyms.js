@@ -4,7 +4,7 @@ const request = require("../request");
 
 //function to fetch synonyms
 const getSynonyms = word => {
-  request(apiPath, word)
+  return request(apiPath, word)
     .then(response => {
       let responseArray = JSON.parse(response);
 
@@ -27,15 +27,19 @@ const getSynonyms = word => {
             console.log(synonym);
             console.log("\n");
           });
+          return;
         } else {
-          console.log("No synonyms found");
+          console.log("No synonyms found\n");
+          return;
         }
       } else {
         console.log("No Related words found");
+        return;
       }
     })
     .catch(error => {
       console.log(error.error, error.statusCode);
+      return;
     });
 };
 

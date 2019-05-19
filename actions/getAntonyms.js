@@ -4,7 +4,7 @@ const request = require("../request");
 
 //function to fetch synonyms
 const getAntonyms = word => {
-  request(apiPath, word)
+  return request(apiPath, word)
     .then(response => {
       let responseArray = JSON.parse(response);
 
@@ -25,16 +25,21 @@ const getAntonyms = word => {
           //console.log(synonyms);
           antonyms.forEach(antonym => {
             console.log(antonym);
+            console.log("\n");
           });
+          return;
         } else {
-          console.log("No antonyms found");
+          console.log("No antonyms found\n");
+          return;
         }
       } else {
         console.log("No Related words found");
+        return;
       }
     })
     .catch(error => {
       console.log(error.error, error.statusCode);
+      return;
     });
 };
 

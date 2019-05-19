@@ -6,18 +6,16 @@ let apiKey =
 
 const performRequest = (apiPath, word) => {
   //composing the url
-  let url = apiHost + "/word/" + word + apiPath + `?api_key=${apiKey}`;
+  let url;
+
+  if (apiPath === "/randomWord") {
+    url = apiHost + "/words" + apiPath + `?api_key=${apiKey}`;
+  } else {
+    url = apiHost + "/word/" + word + apiPath + `?api_key=${apiKey}`;
+  }
 
   //api call
-  return request(apiHost + "/word/" + word + apiPath + `?api_key=${apiKey}`);
-  /* .then(response => {
-      console.log(response);
-      return response;
-    })
-    .catch(error => {
-      console.log(error);
-      return error;
-    }); */
+  return request(url);
 };
 
 module.exports = performRequest;
