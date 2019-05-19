@@ -14,6 +14,7 @@ const getDefinition = word => {
           console.log(
             "Definition-" + (i + 1) + ":\n" + definitionsArray[i].text
           );
+          console.log("\n");
         }
       } else {
         console.log("No definitions found for the word");

@@ -2,6 +2,7 @@ const request = require("./request");
 const Definition = require("./actions/getDefinitions");
 const Synonyms = require("./actions/getSynonyms");
 const Antonyms = require("./actions/getAntonyms");
+const Examples = require("./actions/getExamples");
 
 //fetching the command line arguments
 const cmd = process.argv[2];
@@ -21,6 +22,10 @@ switch (cmd) {
 
   case "ant":
     Antonyms(word);
+    break;
+
+  case "ex":
+    Examples(word);
     break;
 
   default:

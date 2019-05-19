@@ -25,6 +25,7 @@ const getSynonyms = word => {
           //console.log(synonyms);
           synonyms.forEach(synonym => {
             console.log(synonym);
+            console.log("\n");
           });
         } else {
           console.log("No synonyms found");
