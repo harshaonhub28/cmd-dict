@@ -1,5 +1,7 @@
 const request = require("./request");
-const definition = require("./actions/getDefinitions");
+const Definition = require("./actions/getDefinitions");
+const Synonyms = require("./actions/getSynonyms");
+const Antonyms = require("./actions/getAntonyms");
 
 //fetching the command line arguments
 const cmd = process.argv[2];
@@ -10,7 +12,15 @@ console.log("Word:", word);
 
 switch (cmd) {
   case "def":
-    definition(word);
+    Definition(word);
+    break;
+
+  case "syn":
+    Synonyms(word);
+    break;
+
+  case "ant":
+    Antonyms(word);
     break;
 
   default:
