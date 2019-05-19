@@ -2,15 +2,11 @@
 let apiPath = "/randomWord";
 const request = require("../request");
 
-//const Definition = require("./getDefinitions");
-//const Synonyms = require("./getSynonyms");
-//const Antonyms = require("./getAntonyms");
-//const Examples = require("./getExamples");
 const Dict = require("./getFullDict");
 
 //function to print a word of the day and its details
-const getWordOfTheDay = async () => {
-  request(apiPath)
+const getWordOfTheDay = () => {
+  return request(apiPath)
     .then(response => {
       let wordOfTheDay = JSON.parse(response).word;
       console.log("Word of the day:", wordOfTheDay);

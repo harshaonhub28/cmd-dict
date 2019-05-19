@@ -3,20 +3,29 @@ let apiPath = "/definitions";
 const request = require("../request");
 
 //function to fetch definitions of a word
-const getDefinition = word => {
+const getDefinition = (word, isGame = false) => {
   return request(apiPath, word)
     .then(response => {
       //looping over the definitions of a word
       const definitionsArray = JSON.parse(response);
 
       if (definitionsArray.length) {
-        for (let i = 0; i < definitionsArray.length; i++) {
+        if (isGame) {
+          let randomIndex = Math.floor(Math.random() * definitionsArray.length);
+
+          //printing the first definition
           console.log(
-            "Definition-" + (i + 1) + ":\n" + definitionsArray[i].text
+            `Definition for the word: ${definitionsArray[randomIndex].text}`
           );
-          console.log("\n");
+        } else {
+          for (let i = 0; i < definitionsArray.length; i++) {
+            console.log(
+              "Definition-" + (i + 1) + ":\n" + definitionsArray[i].text
+            );
+            console.log("\n");
+          }
+          return;
         }
-        return;
       } else {
         console.log("No definitions found for the word");
       }

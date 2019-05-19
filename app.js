@@ -1,10 +1,13 @@
 const request = require("./request");
 const Definition = require("./actions/getDefinitions");
-const Synonyms = require("./actions/getSynonyms");
-const Antonyms = require("./actions/getAntonyms");
+//const Synonyms = require("./actions/getSynonyms");
+//const Antonyms = require("./actions/getAntonyms");
+const RelatedWords = require("./actions/getRelatedWords");
 const Examples = require("./actions/getExamples");
 const FullDict = require("./actions/getFullDict");
 const WOTD = require("./actions/getWordOfTheDay");
+
+const game = require("./actions/playGame");
 
 //fetching the command line arguments
 let cmd = process.argv[2];
@@ -18,13 +21,13 @@ if (!cmd && !word) {
 }
 
 //if no word is given with a valid command
-if (cmd !== "WOTD" && !word) {
+if (cmd !== "WOTD" && cmd !== "play" && !word) {
   cmd = "No word";
 }
 
 if (cmd !== "No word") {
   //In case word of the day - the word is displayed from word of the day function
-  if (cmd !== "WOTD") {
+  if (cmd !== "WOTD" && cmd !== "play") {
     console.log("Word:", word);
   }
 
@@ -34,11 +37,13 @@ if (cmd !== "No word") {
       break;
 
     case "syn":
-      Synonyms(word);
+      //Synonyms(word);
+      RelatedWords(word, "synonym", false);
       break;
 
     case "ant":
-      Antonyms(word);
+      RelatedWords(word, "antonym", false);
+      //Antonyms(word);
       break;
 
     case "ex":
@@ -51,6 +56,10 @@ if (cmd !== "No word") {
 
     case "WOTD":
       WOTD();
+      break;
+
+    case "play":
+      game();
       break;
 
     default:
